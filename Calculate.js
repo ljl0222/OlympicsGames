@@ -118,6 +118,7 @@ function getAllCountry()
         {
             console.log("Error!");
             alert("Error!");
+            return "Error";
             // remote.dialog.showErrorBox('错误','还没做呢');
         }
     }
@@ -133,6 +134,7 @@ function getAllCountry()
 function ShowStatics()
 {
     var AllCountry = getAllCountry();
+   
     let numCountry = document.getElementById("countryNum").value;
 
     // 输出最终总分结果
@@ -144,7 +146,7 @@ function ShowStatics()
     // 输出到html中
     var html = "";
     html+="<h2>下面展示各个国家总分数</h2>";
-    html+="<table border=1>";
+    html+="<table border=1 class=\"table\">";
         html+="<tr>";
             html+="<th>";
                 html+="国家编号";
@@ -206,7 +208,7 @@ function SortByNum()
     // 输出到html中
     var html = "";
     html+="<h2>按照国家编号排序展示统计数据如下：</h2>";
-    html+="<table border=1>";
+    html+="<table border=1 class=\"table\">";
         html+="<tr>";
             html+="<th>";
                 html+="国家编号";
@@ -265,7 +267,7 @@ function SortByScore()
     // 输出到html中
     var html = "";
     html+="<h2>按照总分排序展示统计数据如下：</h2>";
-    html+="<table border=1>";
+    html+="<table border=1 class=\"table\">";
         html+="<tr>";
             html+="<th>";
                 html+="国家编号";
@@ -324,7 +326,7 @@ function SortByManScore()
     // 输出到html中
     var html = "";
     html+="<h2>按照国家男子团体分数排序展示统计数据如下：</h2>";
-    html+="<table border=1>";
+    html+="<table border=1 class=\"table\">";
         html+="<tr>";
             html+="<th>";
                 html+="国家编号";
@@ -383,7 +385,7 @@ function SortByWomanScore()
     // 输出到html中
     var html = "";
     html+="<h2>按照国家女子团体分数排序展示统计数据如下：</h2>";
-    html+="<table border=1>";
+    html+="<table border=1 class=\"table\">";
         html+="<tr>";
             html+="<th>";
                 html+="国家编号";
@@ -445,7 +447,7 @@ function Search()
         // 输出到html中
         var html = "";
         html+="<h2>国家"+idCountry+"取得名次的项目编号如下：</h2>";
-        html+="<table border=1>";
+        html+="<table border=1 class=\"table\">";
             html+="<tr>";
                 html+="<th>";
                     html+="项目编号";
@@ -518,13 +520,24 @@ function Search()
         let idCountry = document.getElementById("idCountry").value;
         let idProject = document.getElementById("idProject").value;
         var html = "";
+        html+="<h2>查询结果如下所示：</h2>"
         if (AllCountry[idCountry].Projects[idProject] == -1)
-        {
-            html+="未取得名次";
+        {   
+            html+="&nbsp;&nbsp;国家";
+            html+=idCountry;
+            html+="在项目";
+            html+=idProject;
+            html+="中未取得名次";
         }
         else
         {
+            html+="&nbsp;&nbsp;国家";
+            html+=idCountry;
+            html+="在项目";
+            html+=idProject;
+            html+="中取得了第";
             html+=AllCountry[idCountry].Projects[idProject];
+            html+="名";
         }
 
     }

@@ -1,3 +1,11 @@
+function Start()
+{
+    document.getElementById("Start").style.display = "none";
+    document.getElementById("ShowID").style.display = "inline";
+    document.body.style.overflowY = "visible";
+    document.body.style.backgroundImage = "url('1.jpg')";
+}
+
 function Reset()
 {
     document.getElementById("inputData").style.display = "block";
