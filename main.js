@@ -8,9 +8,13 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true
     }
   })
+
+  // 想尝试一下直接整一个默认最大化，但是好像会出现莫名其妙的卡顿，还是算了
+  // mainWindow.maximize()
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
