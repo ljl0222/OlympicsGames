@@ -1,16 +1,7 @@
+"use strict";
+
 //覆盖系统alert 避免出现失去焦点的情况
-const { dialog } = require('electron').remote;
-alert = function (str) {
-    var options = {
-        type: 'warning',
-        buttons: ["确定"],
-        defaultId: 0,
-        cancelId: 0,
-        detail: str,
-        message: ''
-    }
-    dialog.showMessageBoxSync(null, options)
-}
+var { remote } = require('electron');
 
 function getAllCountry()
 {
@@ -53,6 +44,16 @@ function getAllCountry()
 
         console.log("共有多少个数字:"+numArr.length);
         console.log("输出的数字:"+numArr);
+
+        for (let i = 0; i < numArr.length; i++)
+        {
+            var regPos = /^[0-9]+.?[0-9]*/; //判断是否是数字。
+  
+            if(regPos.test(numArr[i]) == 0){
+                remote.dialog.showErrorBox("错误", "输入错误");
+                return "Error";
+            }
+        }
 
         // 统计总分
         if (numArr.length == 5)
@@ -117,7 +118,7 @@ function getAllCountry()
         else
         {
             console.log("Error!");
-            alert("Error!");
+            remote.dialog.showErrorBox("错误", "输入错误");
             return "Error";
             // remote.dialog.showErrorBox('错误','还没做呢');
         }
