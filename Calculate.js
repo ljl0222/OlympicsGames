@@ -491,7 +491,7 @@ function Search()
         // 输出到html中
         var html = "";
         html+="<h2>项目"+idProject+"该项目获得名次的国家编号如下：</h2>";
-        html+="<table border=1>";
+        html+="<table border=1  class=\"table\">";
             html+="<tr>";
                 html+="<th>";
                     html+="名次";
